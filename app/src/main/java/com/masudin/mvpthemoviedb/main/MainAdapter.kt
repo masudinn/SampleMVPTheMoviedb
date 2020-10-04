@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.masudin.mvpthemoviedb.BuildConfig.URLPOSTER
 import com.masudin.mvpthemoviedb.R
 import com.masudin.mvpthemoviedb.model.Movie
 import com.squareup.picasso.Picasso
@@ -62,17 +63,13 @@ class MainAdapter(private val results: List<Movie>, private val listener: (Movie
 
 class MovieHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    val urlPoster: String = "http://image.tmdb.org/t/p/w780"
-    val apiKey : String = "90b54a38972894350ba0831c5b17aad0"
-    val baseUrl : String = "https://api.themoviedb.org/3/movie/popular?api_key="
-
     private val moviePoster : ImageView = view.findViewById(R.id.movie_Poster)
     private val movieTittle : TextView = view.findViewById(R.id.tvTittle)
 
     fun bind(movie: Movie, listener: (Movie) -> Unit) {
-        Picasso.get().load(urlPoster + movie.poster).into(moviePoster)
-        Log.d("Gambar","url = "+urlPoster+movie.poster)
-        Log.d("title","url = "+urlPoster+movie.title)
+        Picasso.get().load(URLPOSTER + movie.poster).into(moviePoster)
+        Log.d("Gambar","url = "+URLPOSTER+movie.poster)
+        Log.d("title","url = "+URLPOSTER+movie.title)
         movieTittle.text = movie.title
         moviePoster.onClick {
             listener(movie)

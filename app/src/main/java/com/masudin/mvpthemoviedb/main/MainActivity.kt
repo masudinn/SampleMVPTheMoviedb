@@ -31,7 +31,12 @@ class MainActivity : AppCompatActivity(), MainView {
         recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
 
         adapter = MainAdapter(movies) {
-            startActivity<DetailActivity>()
+            startActivity<DetailActivity>(
+                "Title" to it.title,
+                "Poster" to it.poster,
+                "Overview" to it.overview
+            )
+
         }
 
         listMovie.adapter = adapter
