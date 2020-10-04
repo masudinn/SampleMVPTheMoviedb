@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
         listMovie = findViewById(R.id.recyclerView)
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
 
         adapter = MainAdapter(movies) {
             startActivity<DetailActivity>()
